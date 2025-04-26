@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phishing e Engenharia Social</title>
+  <link rel="stylesheet" href="virus.css">
+</head>
+<body>
+  <main>
+    <nav>
+      <button onclick="mostrarPagina('app')">Simulador</button>
+      <button onclick="mostrarPagina('blog')">Blog</button>
+      <button onclick="mostrarPagina('phishing')">Phishing</button>
+    </nav>
+
+    <div id="app">
+      <div id="terminal">
+        Inicializando sistema...
+      </div>
+      <button onclick="ativarVirus()">ATIVAR VÍRUS</button>
+      <button onclick="reiniciarSistema()">REINICIAR</button>
+    </div>
+
+    <div id="blog" style="display:none">  
+      <hr>
+      <h2>Blog do Vírus Simulado</h2>
+      
+      <article>
+        <h3>Como o Simulador Funciona?</h3>
+        <p>Utilizamos um terminal falso e uma sequência de mensagens cronometradas com <code>setInterval</code>. O DOM é manipulado dinamicamente para exibir os "efeitos do ataque".</p>
+      </article>
+      <article>
+        <h3>Expandindo o Projeto</h3>
+        <p>Você pode adicionar sons, efeitos visuais, novos botões ou até transformar esse projeto em uma pequena história interativa com ramificações.</p>
+      </article>
+      <footer>
+        <p>2025 Blog do Simulador - Todos os direitos reservados</p>
+      </footer>
+    </div>
+
+    <div id="phishing" style="display:none">
+      <hr>
+      <h2>Phishing</h2>
+      <article>
+        <h3>O que é Phishing?</h3>
+        <p>Phishing é uma técnica de ataque cibernético em que o invasor tenta enganar a vítima para que ela forneça informações confidenciais, como senhas, dados bancários ou informações pessoais. Isso normalmente ocorre por meio de e-mails, mensagens ou sites falsos que imitam fontes confiáveis.</p>
+      </article>
+      
+      <article>
+        <h3>Como se proteger?</h3>
+        <ul>
+          <li>Desconfie de e-mails ou mensagens com senso de urgência.</li>
+          <li>Não clique em links suspeitos.</li>
+          <li>Verifique o endereço do site antes de inserir dados.</li>
+          <li>Use autenticação em dois fatores sempre que possível.</li>
+          <li>Mantenha seu antivírus e navegador atualizados.</li>
+        </ul>
+      </article>
+      
+      <article>
+        <h3>Exemplo real:</h3>
+        <p>Você recebe um e-mail dizendo que seu "cartão foi bloqueado" e pedindo pra clicar num link e "confirmar seus dados". O site parece real, mas é falso.</p>
+      </article>
+      
+      <footer>
+        <p>Informações educativas sobre segurança digital - 2025</p>
+      </footer>
+    </div>
+  </main>
+  <script>
+    const mensagens = [
+      '[!] Sistema comprometido...',
+      '[!] Deletando arquivos...',
+      '[!] Vazando dados para a deep web...',
+      '[!] Instalando trojan permanente...',
+      '[!] Auto-destruição em 3... 2... 1...'
+    ];
+
+    let index = 0;
+    let intervalo;
+
+    function ativarVirus() {
+      const terminal = document.getElementById('terminal');
+      terminal.innerText = 'Iniciando ataque virtual...\n';
+      index = 0;
+      intervalo = setInterval(() => {
+        if (index < mensagens.length) {
+          terminal.innerText += mensagens[index++] + '\n';
+        } else {
+          terminal.innerText += '\nSistema corrompido. 😈';
+          clearInterval(intervalo);
+        }
+      }, 1500);
+    }
+
+    function reiniciarSistema() {
+      clearInterval(intervalo);
+      document.getElementById('terminal').innerText = 'Inicializando sistema...';
+    }
+
+    function mostrarPagina(pagina) {
+      document.getElementById('app').style.display = 'none';
+      document.getElementById('blog').style.display = 'none';
+      document.getElementById('phishing').style.display = 'none';
+
+      document.getElementById(pagina).style.display = 'block';
+    }
+  </script>
+</body>
+</html>
